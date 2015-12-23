@@ -9,7 +9,6 @@ def hello():
 @app.route('/image', methods=['GET'])
 def returnJson():
 	#make json
-	the_attachments = jsonify(text='and this!')
-	json = jsonify(text='Yo i got dis',attachments=the_attachments)
+	json = jsonify(text='Yo i got dis',attachments=[text='and this'])
 	#return json
 	return json
