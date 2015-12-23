@@ -7,9 +7,6 @@ def hello():
 	return 'Hello World'
 
 @app.route('/image', methods=['GET'])
-def login():
-	returnJson()
-
 def returnJson():
 	#make json
 	json = jsonify(answer=['this is answer'])
