@@ -11,9 +11,9 @@ def returnJson():
 	#make json
 	data = {
 		'text' : 'Yo I got dis',
-		'attachments' : {
+		'attachments' : [
 			'text' : 'and this!'
-		}
+		]
 	}
 	#return
 	return json.dumps(data)
