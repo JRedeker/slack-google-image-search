@@ -1,5 +1,5 @@
 import os
-from flask import Flask, json
+from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.route('/')
@@ -9,9 +9,5 @@ def hello():
 @app.route('/image', methods=['GET'])
 def returnJson():
 	#make json
-	data = {
-		"response_type": "in_channel",
-		'text' : 'https://i.imgur.com/7drHiqrh.jpg'
-	}
-	#return
-	return json.dumps(data)
+	#return it
+	return jsonify(response_type='in_channel',text='https://i.imgur.com/7drHiqrh.jpg')
