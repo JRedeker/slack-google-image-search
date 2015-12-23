@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, jsonify
 app = Flask(__name__)
 
@@ -9,6 +10,12 @@ def hello():
 @app.route('/image', methods=['GET'])
 def returnJson():
 	#make json
-	json = jsonify(text='Yo i got dis',attachments=[{text='and this!'}])
+	data = {
+		'text':'Yo i got dis',
+		'attachments': {
+			'text':'and this!'
+		}
+	}
+	json = json.dumps(data)
 	#return json
 	return json
