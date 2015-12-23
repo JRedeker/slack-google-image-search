@@ -12,7 +12,9 @@ def returnJson():
 	data = {
 		'text' : 'Yo I got dis',
 		'attachments' : [
-			'text' : 'and this!'
+			{
+				'text' : 'and this!'
+			}
 		]
 	}
 	#return
