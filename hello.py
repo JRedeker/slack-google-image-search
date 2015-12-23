@@ -10,12 +10,8 @@ def hello():
 def returnJson():
 	#make json
 	data = {
-		'text' : 'Yo I got dis',
-		'attachments' : [
-			{
-				'text' : 'and this!'
-			}
-		]
+		"response_type": "in_channel",
+		'text' : 'https://i.imgur.com/7drHiqrh.jpg'
 	}
 	#return
 	return json.dumps(data)
