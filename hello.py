@@ -9,5 +9,7 @@ def hello():
 @app.route('/image', methods=['GET'])
 def returnJson():
 	#make json
+	#request.query_string
+	theText = "something!"
 	#return it
-	return jsonify(response_type='in_channel',text='https://i.imgur.com/7drHiqrh.jpg')
+	return jsonify(response_type='in_channel',text=theText)
