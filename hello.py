@@ -26,5 +26,5 @@ def getImage(request_data):
 	f = fetcher.open(searchUrl)
 	deserialized_output = simplejson.load(f)
 	imageUrl = deserialized_output['responseData']['results'][0]['unescapedUrl']
-	file = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
+	#file = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
 	return imageUrl
