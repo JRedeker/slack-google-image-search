@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,6 +10,6 @@ def hello():
 def returnJson():
 	#make json
 	#request.query_string
-	theText = "something"
+	theText = request
 	#return it
 	return jsonify(response_type='in_channel',text=theText)
