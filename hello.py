@@ -18,7 +18,6 @@ def returnJson():
 
 def getImage(request_data):
 	options = images.ImageOptions()
-	options.image_type = images.ImageType.gif
 	results = google.search_images(request_data, options)
 	#goog_results = goog_results.json()
 	#imageUrl = goog_results
