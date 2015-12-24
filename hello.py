@@ -25,4 +25,4 @@ def getImage(request_data,ip):
 	goog_request = requests.get(url)
 	goog_results = goog_results.json()
 	imageUrl = goog_results
-	return imageUrl
+	return request_data
