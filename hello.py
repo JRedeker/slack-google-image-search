@@ -1,8 +1,8 @@
 import os
 import urllib2
-import simplejson
 from flask import Flask, jsonify, request
 app = Flask(__name__)
+app.debug = True
 
 @app.route('/')
 def hello():
@@ -34,7 +34,7 @@ def getImage(request_data,ip):
 	response = urllib2.urlopen(request)
 
 	# Process the JSON string.
-	results = simplejson.load(response)
+	results = json.load(response)
 	imageUrl = results['responseData']['results'][0]['unescapedUrl']
 	#file = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
 	return imageUrl
