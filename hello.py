@@ -12,16 +12,12 @@ def returnJson():
 	#make json
 	#request.query_string
 	request_data = request.form.get('text')
-	if request.headers.getlist("X-Forwarded-For"):
-	   ip = request.headers.getlist("X-Forwarded-For")[0]
-	else:
-	   ip = request.remote_addr
-	#imageUrl = getImage(request_data,ip)
+	imageUrl = getImage(request_data)
 	#return it
-	return jsonify(response_type='in_channel',text=request_data)
+	return jsonify(response_type='in_channel',text=imageUrl)
 	#return jsonify(response_type='in_channel',text=imageUrl)
 
-def getImage(request_data,ip):
+def getImage(request_data):
 	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data
 	goog_request = requests.get(url)
 	goog_results = goog_results.json()
