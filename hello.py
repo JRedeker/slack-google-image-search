@@ -15,11 +15,10 @@ def returnJson():
 	if request.headers.getlist("X-Forwarded-For"):
 	   ip = request.headers.getlist("X-Forwarded-For")[0]
 	else:
-	   ip = "nope"
-	return jsonify(response_type='in_channel',text=ip)
-	imageUrl = getImage(request_data,request_ip)
+	   ip = request.remote_addr
+	imageUrl = getImage(request_data,ip)
 	#return it
-	#return jsonify(response_type='in_channel',text=imageUrl)
+	return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data,ip):
 	fetcher = urllib2.build_opener()
