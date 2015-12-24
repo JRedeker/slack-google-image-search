@@ -27,7 +27,6 @@ def getImage(request_data,ip):
 	fetcher = urllib2.build_opener()
 	searchTerm = request_data
 	startIndex = 0
-	searchUrl = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + searchTerm + "&start=" + startIndex
 	url = ('https://ajax.googleapis.com/ajax/services/search/images?' +
 	       'v=1.0&q=barack%20obama&userip=' + ip)
 
