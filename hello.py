@@ -19,7 +19,7 @@ def returnJson():
 
 def getImage(request_data):
 	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data
-	goog_request = requests.get(url)
+	#goog_request = requests.get(url)
 	#goog_results = goog_results.json()
 	#imageUrl = goog_results
 	return request_data
