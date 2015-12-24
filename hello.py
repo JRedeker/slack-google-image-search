@@ -10,6 +10,6 @@ def hello():
 def returnJson():
 	#make json
 	#request.query_string
-	theText = request
+	theText = request.args
 	#return it
 	return jsonify(response_type='in_channel',text=theText)
