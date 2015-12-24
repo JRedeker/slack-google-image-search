@@ -1,6 +1,7 @@
 import os
 import urllib2
 from flask import Flask, jsonify, request
+from google import google, images
 app = Flask(__name__)
 
 @app.route('/')
@@ -18,8 +19,9 @@ def returnJson():
 	#return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data):
-	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data
-	#goog_request = requests.get(url)
+	options = images.ImageOptions()
+	options.image_type = images.ImageType.gif
+	results = google.search_images(request_data, options)
 	#goog_results = goog_results.json()
 	#imageUrl = goog_results
-	return request_data
+	return results
