@@ -16,7 +16,7 @@ def returnJson():
 	   ip = request.headers.getlist("X-Forwarded-For")[0]
 	else:
 	   ip = "nope"
-	return jsonify(response_type='in_channel',text=request_ip)
+	return jsonify(response_type='in_channel',text=ip)
 	imageUrl = getImage(request_data,request_ip)
 	#return it
 	#return jsonify(response_type='in_channel',text=imageUrl)
