@@ -2,7 +2,6 @@ import os
 import urllib2
 from flask import Flask, jsonify, request
 app = Flask(__name__)
-app.debug = True
 
 @app.route('/')
 def hello():
