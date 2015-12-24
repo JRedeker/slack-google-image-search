@@ -11,12 +11,10 @@ def hello():
 @app.route('/image', methods=['POST'])
 def returnJson():
 	#make json
-	#request.query_string
 	request_data = request.form.get('text')
 	imageUrl = getImage(request_data)
 	#return it
 	return jsonify(response_type='in_channel',text=imageUrl)
-	#return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data):
 	options = images.ImageOptions()
@@ -24,4 +22,4 @@ def getImage(request_data):
 	results = google.search_images(request_data, options)
 	#goog_results = goog_results.json()
 	#imageUrl = goog_results
-	return results
+	return "lol test"
