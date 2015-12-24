@@ -14,9 +14,10 @@ def returnJson():
 	#request.query_string
 	request_data = request.form.get('text')
 	request_ip = request.remote_addr
+	return jsonify(response_type='in_channel',text=request_ip)
 	imageUrl = getImage(request_data,request_ip)
 	#return it
-	return jsonify(response_type='in_channel',text=imageUrl)
+	#return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data,ip):
 	fetcher = urllib2.build_opener()
