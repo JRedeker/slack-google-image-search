@@ -13,7 +13,11 @@ def returnJson():
 	#make json
 	#request.query_string
 	request_data = request.form.get('text')
-	request_ip = request.remote_addr
+	ip = "nope"
+	if request.headers.getlist("X-Forwarded-For"):
+	   ip = request.headers.getlist("X-Forwarded-For")[0]
+	else:
+	   ip = request.remote_addr
 	return jsonify(response_type='in_channel',text=request_ip)
 	imageUrl = getImage(request_data,request_ip)
 	#return it
