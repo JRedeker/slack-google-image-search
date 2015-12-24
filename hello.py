@@ -21,7 +21,7 @@ def returnJson():
 	return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data,ip):
-	url = 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + request_data
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data
 	goog_request = requests.get(url)
 	goog_results = goog_results.json()
 	imageUrl = goog_results
