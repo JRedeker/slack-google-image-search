@@ -21,17 +21,8 @@ def returnJson():
 	return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data,ip):
-	fetcher = urllib2.build_opener()
-	searchTerm = request_data
-	startIndex = 0
-	url = ('https://ajax.googleapis.com/ajax/services/search/images?' +
-	       'v=1.0&q=barack%20obama&userip=' + ip)
-
-	request = urllib2.Request(url, None, {'Referer': 'https://salty-taiga-1657.herokuapp.com/image'})
-	response = urllib2.urlopen(request)
-
-	# Process the JSON string.
-	results = json.load(response)
-	imageUrl = results['responseData']['results'][0]['unescapedUrl']
-	#file = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
+	url = 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' + request_data
+	goog_request = requests.get(url)
+	goog_results = goog_results.json()
+	imageUrl = goog_results
 	return imageUrl
