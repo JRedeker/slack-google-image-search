@@ -6,7 +6,7 @@ app = Flask(__name__)
 def hello():
 	return 'Hello World'
 
-@app.route('/image', methods=['GET'])
+@app.route('/image', methods=['POST'])
 def returnJson():
 	#make json
 	#request.query_string
