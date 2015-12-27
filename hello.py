@@ -25,5 +25,6 @@ def getImage(request_data):
 	response = goog_search.json()
 	first_image_url = response['items'][0]['link']
 	return first_image_url
-
-app.run()
+	
+# only for testing
+#app.run()
