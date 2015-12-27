@@ -1,13 +1,11 @@
 import os
 from flask import Flask, jsonify, request
 import requests
-from my_keys import *
+import my_keys
 app = Flask(__name__)
 #app.debug = True
 
-## make sure to add your cx and api keys
-#cx = ****
-#api_key = ****
+## make sure to add your cx and api keys, i put mine in a file named my_keys
 
 @app.route('/')
 def hello():
@@ -22,7 +20,7 @@ def returnJson():
 	return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data):
-	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + cx + '&safe=medium&searchType=image&key=' + api_key
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + my_keys.cx + '&safe=medium&searchType=image&key=' + my_keys.api_key
 	goog_search = requests.get(url)
 	response = goog_search.json()
 	first_image_url = response['items'][0]['link']
