@@ -1,5 +1,7 @@
 import os
 from flask import Flask, jsonify, request
+import requests
+from apiclient.discovery import build
 app = Flask(__name__)
 #app.debug = True
 
@@ -18,7 +20,10 @@ def returnJson():
 
 
 def getImage(request_data):
-	url = "nothing"
-	return url
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=011167321752512868795%3Axlcdtily1rq&searchType=image&key=' + 'AIzaSyBvTZSVvBR9CnH-088tnnx4vDaA6Y1fdPk'
+	goog_search = requests.get(url)
+	response = goog_search.json()
+	first_image_url = response['items'][0]['link']
+	return first_image_url
 
 app.run()
