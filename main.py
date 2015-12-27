@@ -20,7 +20,7 @@ def returnJson():
 	return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data):
-	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + my_keys.cx + '&safe=medium&searchType=image&key=' + my_keys.api_key
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + '011167321752512868795%3Axlcdtily1rq' + '&safe=medium&searchType=image&key=' + 'AIzaSyBvTZSVvBR9CnH-088tnnx4vDaA6Y1fdPk'
 	goog_search = requests.get(url)
 	response = goog_search.json()
 	first_image_url = response['items'][0]['link']
