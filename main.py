@@ -1,6 +1,7 @@
 import os
 from flask import Flask, jsonify, request
 import requests
+import my_keys
 app = Flask(__name__)
 #app.debug = True
 
@@ -16,11 +17,10 @@ def returnJson():
 	request_data = request.form.get('text')
 	imageUrl = getImage(request_data)
 	#return it
-	return jsonify(response_type='in_channel',text=request_data)
-	#return jsonify(response_type='in_channel',text=imageUrl)
+	return jsonify(response_type='in_channel',text=imageUrl)
 
 def getImage(request_data):
-	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + '011167321752512868795%3Axlcdtily1rq' + '&safe=medium&searchType=image&key=' + 'AIzaSyBvTZSVvBR9CnH-088tnnx4vDaA6Y1fdPk'
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + my_keys.cx + '&safe=medium&searchType=image&key=' + my_keys.api_key
 	goog_search = requests.get(url)
 	response = goog_search.json()
 	first_image_url = response['items'][0]['link']
