@@ -1,7 +1,6 @@
 import os
 from flask import Flask, jsonify, request
 import requests
-import my_keys
 app = Flask(__name__)
 #app.debug = True
 
