@@ -26,4 +26,4 @@ def getImage(request_data):
 	return first_image_url
 
 # only for testing
-app.run()
+#app.run()
