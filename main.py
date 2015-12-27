@@ -2,7 +2,7 @@ import os
 from flask import Flask, jsonify, request
 import requests
 app = Flask(__name__)
-#app.debug = True
+app.debug = True
 
 ## make sure to add your cx and api keys, i put mine in a file named my_keys (hidden)
 
