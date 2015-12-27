@@ -5,7 +5,7 @@ import my_keys
 app = Flask(__name__)
 #app.debug = True
 
-## make sure to add your cx and api keys, i put mine in a file named my_keys
+## make sure to add your cx and api keys, i put mine in a file named my_keys (hidden)
 
 @app.route('/')
 def hello():
