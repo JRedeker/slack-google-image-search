@@ -2,6 +2,7 @@ import os
 from flask import Flask, jsonify, request
 import requests
 import my_keys
+import ast
 app = Flask(__name__)
 #app.debug = True
 
@@ -18,6 +19,15 @@ def returnJson():
 	imageUrl = getImage(request_data)
 	#return it
 	return jsonify(response_type='in_channel',text=imageUrl)
+
+@app.route('/math', methods=['POST'])
+def doMath():
+	#get data from the post, evaluate it, and return JSON
+	requestData = request.form.get('text')
+	#literalEval because it's very limited in what it will accept
+	mathResult = ast.literalEval(requestData)
+	return jsonify(response_type='in_channel',text=mathResult)
+
 
 def getImage(request_data):
 	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + my_keys.cx + '&safe=medium&searchType=image&key=' + my_keys.api_key
