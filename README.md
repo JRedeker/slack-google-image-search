@@ -1,4 +1,4 @@
-# slack_image_search
+# slack Google image search
 use a slack slash command to grab the top image from a google image search
 
 # What is this?
