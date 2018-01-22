@@ -1,4 +1,4 @@
-# slack Google image search
+# Slack Google Image Search
 use a slack slash command to grab the top image from a google image search
 
 # What is this?
@@ -7,8 +7,8 @@ Note: unless you pay google, you'll be limited to 100 returns per day
 
 # Install
 1. plug your keys into main.py
-2. push to heroku
-3. setup a new slash command in slack to send a POST request to your heroku url
+2. push to your favorite PaaS
+3. setup a new slash command in slack to send a POST request to your PaaS application url
 4. tada!
 
 # Usage
