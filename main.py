@@ -1,10 +1,11 @@
 import os
 from flask import Flask, jsonify, request
 import requests
-import my_keys
 import ast
+
+
 app = Flask(__name__)
-#app.debug = True
+app.debug = True
 
 ## make sure to add your cx and api keys, i put mine in a file named my_keys (hidden)
 
@@ -30,11 +31,48 @@ def doMath():
 
 
 def getImage(request_data):
-	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + my_keys.cx + '&safe=medium&searchType=image&key=' + my_keys.api_key
+
+	f= open("apikey.txt","r")
+	apikey = f.read().strip()
+	f.close()
+
+	f= open("cx.txt","r")
+	cx = f.read().strip()
+	f.close() 
+
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + cx + '&safe=medium&searchType=image&key=' + apikey
+
 	goog_search = requests.get(url)
 	response = goog_search.json()
 	first_image_url = response['items'][0]['link']
 	return first_image_url
 
+@app.route('/testimage', methods=['GET'])
+def getTestImage():
+
+	request_data = 'starcraft'
+
+	f= open("apikey.txt","r")
+	apikey = f.read().strip()
+	f.close()
+
+	f= open("cx.txt","r")
+	cx = f.read().strip()
+	f.close() 
+
+
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + cx + '&safe=medium&searchType=image&key=' + apikey
+
+	print url
+
+	goog_search = requests.get(url)
+	response = goog_search.json()
+	first_image_url = response['items'][0]['link']
+
+	print first_image_url
+
+	return first_image_url
+
+
 # only for testing
-#app.run()
+app.run()
