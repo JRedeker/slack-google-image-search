@@ -31,14 +31,6 @@ def doMath():
 
 def getImage(request_data):
 
-	f= open("apikey.txt","r")
-	apikey = f.read().strip()
-	f.close()
-
-	f= open("cx.txt","r")
-	cx = f.read().strip()
-	f.close() 
-
 	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + os.environ['CX_KEY'] + '&safe=medium&searchType=image&key=' + os.environ['API_KEY']
 
 	goog_search = requests.get(url)
@@ -46,6 +38,8 @@ def getImage(request_data):
 	first_image_url = response['items'][0]['link']
 	return first_image_url
 
+
+'''
 @app.route('/testimage', methods=['GET'])
 def getTestImage():
 
@@ -63,6 +57,8 @@ def getTestImage():
 	print first_image_url
 
 	return first_image_url
+'''
+
 
 @app.errorhandler(500)
 def server_error(e):
