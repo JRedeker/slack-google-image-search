@@ -1,7 +1,6 @@
-import os
 from flask import Flask, jsonify, request
-import requests
-import ast
+
+import os, requests, ast
 
 
 app = Flask(__name__)
@@ -40,7 +39,7 @@ def getImage(request_data):
 	cx = f.read().strip()
 	f.close() 
 
-	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + cx + '&safe=medium&searchType=image&key=' + apikey
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + os.environ['CX_KEY'] + '&safe=medium&searchType=image&key=' + os.environ['API_KEY']
 
 	goog_search = requests.get(url)
 	response = goog_search.json()
@@ -52,16 +51,8 @@ def getTestImage():
 
 	request_data = 'starcraft'
 
-	f= open("apikey.txt","r")
-	apikey = f.read().strip()
-	f.close()
 
-	f= open("cx.txt","r")
-	cx = f.read().strip()
-	f.close() 
-
-
-	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + cx + '&safe=medium&searchType=image&key=' + apikey
+	url = 'https://www.googleapis.com/customsearch/v1?q=' + request_data + '&cx=' + os.environ['CX_KEY'] + '&safe=medium&searchType=image&key=' + os.environ['API_KEY']
 
 	print url
 
@@ -79,5 +70,5 @@ def server_error(e):
 	logging.exception('An error occurred during a request.')
 	return 'An internal error occurred.', 500
 
-# only for testing
-#app.run()
+if __name__ == "__main__":
+	app.run(host='0.0.0.0')
