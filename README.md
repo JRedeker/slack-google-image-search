@@ -6,11 +6,18 @@ Just a super simple script to use Google CSE to grab the top imgur image returne
 Note: unless you pay google, you'll be limited to 100 returns per day
 
 # Install
-1. plug your keys into main.py
-2. push to your favorite PaaS
-3. setup a new slash command in slack to send a POST request to your PaaS application url
+1. Make sure Docker is installed
+2. Pull repo onto you server and cd into repo dir
+3. Build Docker image with: 
+
+`docker build -t slack-image . `
+
+4. Run Docker image with 
+
+`docker run -d -p 5000:5000 -e API_KEY='$YourGoogleSearchAPIKEY' -e CX_KEY='$CXKey' -e SLACK_TOKEN='$YourSlackSlashCommandTOken' slack-image`
+
 4. tada!
 
 # Usage
-if your slack slash command is "/image" :
+If your slack slash command is "/image" :
 Get the it's happening .gif by entering: "/image its happening"
